@@ -1,0 +1,40 @@
+{{- if not (eq .Values.enabled "core") }}
+{{- $namespace := print $.Values.global.pattern "-" $.Values.clusterGroup.name }}
+{{- $clustername := $.Values.clusterGroup.name }}
+{{- if (eq .Values.enabled "plumbing") }}
+{{- $namespace = "openshift-gitops" }}
+{{- end }}
+{{- range .Values.clusterGroup.applicationsets }}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ .name }}
+  namespace: {{ $namespace }}
+  labels:
+    app: {{ .name }}
+spec:
+  {{- if .generators }}
+  generators: {{ .generators | toPrettyJson }}
+  {{- end }}
+  {{- if hasKey (index .generators 0) "list" }}
+  template:
+    metadata:
+      name: {{ .template.metadata.name | toPrettyJson }}
+    spec:
+      project: {{ .template.spec.project }}
+      source: {{ .template.spec.source | toPrettyJson }}
+      destination: {{ .template.spec.destination | toPrettyJson }}
+  {{- end }}
+  {{- if hasKey (index .generators 0) "git" }}
+  template:
+    metadata:
+      name: {{ .template.metadata.name | toPrettyJson }}
+    spec:
+      project: {{ .template.spec.project }}
+      source: {{ .template.spec.source | toPrettyJson }}
+      destination: {{ .template.spec.destination | toPrettyJson }}
+  {{- end }}
+
+---
+{{- end }}
+{{- end }}
