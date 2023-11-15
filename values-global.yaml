@@ -23,8 +23,8 @@ global:
 
   s3:
     bucket:
-      name: BUCKETNAME
-      region: AWSREGION
+      name: manuela-data-lake
+      region: us-west-1
       message:
         aggregation:
           count: 50
