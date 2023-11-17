@@ -12,6 +12,9 @@ clusterGroup:
   - manuela-data-lake
   - staging
   - vault
+  - redhat-ods-operator: 
+      operatorGroup: true
+      targetNamespaces:
 
     #  operatorgroupExcludes:
     #  - manuela-ml-workspace
@@ -20,6 +23,11 @@ clusterGroup:
     acm:
       name: advanced-cluster-management
       namespace: open-cluster-management
+
+    ods:
+      name: rhods-operator
+      channel: alpha
+      namespace: redhat-ods-operator
 
     amqbroker-prod:
       name: amq-broker-rhel8
