@@ -27,7 +27,7 @@ clusterGroup:
     ods:
       name: rhods-operator
       channel: alpha
-      namespace: redhat-ods-operator
+      namespace: openshift-operator
 
     amqbroker-prod:
       name: amq-broker-rhel8
