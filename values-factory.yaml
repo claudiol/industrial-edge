@@ -8,9 +8,9 @@ clusterGroup:
   - manuela-stormshift-messaging
 
   subscriptions:
-  - name: seldon-operator
+  - name: seldon-operator-certified
     namespace: manuela-stormshift-messaging
-    source: community-operators
+    source: certified-operators
 
   - name: amq-streams
     namespace: manuela-stormshift-messaging
