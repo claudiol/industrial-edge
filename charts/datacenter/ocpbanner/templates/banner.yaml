@@ -1,0 +1,16 @@
+---
+apiVersion: console.openshift.io/v1
+kind: ConsoleNotification
+metadata:
+  name: purpose-banner
+spec:
+{{- if .Values.main.extraParameters }}
+  {{- range .Values.main.extraParameters }}
+  {{- if eq .name "environment" }}
+  text: "Cluster Environment [{{ .value }}]"
+  {{- end }}
+  location: "BannerTopBottom" #BannerTopBottom
+  color: '#fff'
+  backgroundColor: '#000000'
+  {{- end }}
+{{- end }}
