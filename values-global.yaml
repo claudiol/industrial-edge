@@ -1,5 +1,8 @@
 main:
   clusterGroupName: datacenter
+  multiSourceConfig:
+    enabled: false
+  experimentalCapabilities: initcontainers
 
 global:
   pattern: industrial-edge
@@ -10,21 +13,21 @@ global:
     installPlanApproval: Automatic
 
   imageregistry:
-    account: PLAINTEXT
+    account: claudiol
     hostname: quay.io
     type: quay
 
   git:
     hostname: github.com
-    account: PLAINTEXT
+    account: claudiol
     #username: PLAINTEXT
-    email: SOMEWHERE@EXAMPLE.COM
+    email: claudiol@redhat.com
     dev_revision: main
 
   s3:
     bucket:
-      name: BUCKETNAME
-      region: AWSREGION
+      name: manueal-data-lake
+      region: us-west-2
       message:
         aggregation:
           count: 50
