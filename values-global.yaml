@@ -7,6 +7,8 @@ main:
 global:
   pattern: industrial-edge
 
+  environment: prod
+
   options:
     useCSV: False
     syncPolicy: Automatic
