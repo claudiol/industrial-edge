@@ -4,7 +4,7 @@ main:
     enabled: false
   experimentalCapabilities: initcontainers
   extraParameters:
-    - name: environment
+    - name: clusterEnvironment
       value: prod
 
 global:
