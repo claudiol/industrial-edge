@@ -4,7 +4,7 @@ kind: ConsoleNotification
 metadata:
   name: purpose-banner
 spec:
-{{- if .Values.environment }}
+{{- if .Values.clusterEnvironment }}
   text: "Cluster Environment [{{ .Values.environment }}]"
 {{- end }}
   location: "BannerTopBottom" #BannerTopBottom
