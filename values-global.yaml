@@ -3,6 +3,9 @@ main:
   multiSourceConfig:
     enabled: false
   experimentalCapabilities: initcontainers
+  extraParameters:
+    - name: environment
+      value: prod
 
 global:
   pattern: industrial-edge
