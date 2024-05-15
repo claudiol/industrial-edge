@@ -5,7 +5,9 @@ metadata:
   name: purpose-banner
 spec:
 {{- if .Values.clusterEnvironment }}
-  text: "Cluster Environment [{{ .Values.environment }}]"
+  text: "OpenShift Cluster Environment [{{ .Values.environment }}]"
+{{- else }}
+  text: "OpenShift Cluster Environment"
 {{- end }}
   location: "BannerTopBottom" #BannerTopBottom
   color: '#fff'
