@@ -4,13 +4,9 @@ kind: ConsoleNotification
 metadata:
   name: purpose-banner
 spec:
-{{- if .Values.main.extraParameters }}
-  {{- range .Values.main.extraParameters }}
-  {{- if eq .name "environment" }}
-  text: "Cluster Environment [{{ .value }}]"
-  {{- end }}
+{{- if .Values.environment }}
+  text: "Cluster Environment [{{ .Values.environment }}]"
+{{- end }}
   location: "BannerTopBottom" #BannerTopBottom
   color: '#fff'
   backgroundColor: '#000000'
-  {{- end }}
-{{- end }}
