@@ -22,7 +22,7 @@ global:
     account: claudiol
     #username: PLAINTEXT
     email: claudiol@redhat.com
-    dev_revision: main
+    dev_revision: seldon-dev
 
   s3:
     bucket:
