@@ -73,6 +73,12 @@ spec:
                         value: {{ $group.name }}
                       - name: global.experimentalCapabilities
                         value: {{ $.Values.global.experimentalCapabilities }}
+                     {{- if $.Values.main.extraParameters }}
+                     {{- range $.Values.main.extraParameters }}
+                      - name: {{ .name }}
+                        value: {{ .value }}
+                     {{- end }}
+                     {{- end }}
                      {{- range .helmOverrides }}
                       - name: {{ .name }}
                         value: {{ .value | quote }}
