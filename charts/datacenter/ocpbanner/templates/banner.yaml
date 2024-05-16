@@ -7,7 +7,7 @@ spec:
 {{- if .Values.clusterEnvironment }}
   text: "OpenShift Cluster Environment [{{ .Values.clusterEnvironment }}]"
 {{- else }}
-  text: "OpenShift Cluster Environment"
+  text: "OpenShift Cluster Environment [{{.Values.message}}]"
 {{- end }}
   location: "BannerTopBottom" #BannerTopBottom
   color: '#fff'
