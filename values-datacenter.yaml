@@ -176,8 +176,6 @@ clusterGroup:
       # Values must be strings!
       - name: clusterGroup.isHubCluster
         value: "false"
-      - name: clusterEnvironment
-        value: "prod"
       clusterSelector:
         matchLabels:
           clusterGroup: factory
