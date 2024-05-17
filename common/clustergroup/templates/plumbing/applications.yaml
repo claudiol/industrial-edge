@@ -187,6 +187,8 @@ spec:
           - name: {{ $k }}
             value: {{ printf "%s" $v | quote }}
           {{- end }}
+          - name: extraParametersNested
+            value: {{ $.Values.extraParametersNested }}
           {{- range .overrides }}
           - name: {{ .name }}
             value: {{ .value | quote }}

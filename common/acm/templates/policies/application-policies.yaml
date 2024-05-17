@@ -73,12 +73,12 @@ spec:
                         value: {{ $group.name }}
                       - name: global.experimentalCapabilities
                         value: {{ $.Values.global.experimentalCapabilities }}
-                     {{- if $.Values.main.extraParameters }}
-                     {{- range $.Values.main.extraParameters }}
-                      - name: {{ .name }}
-                        value: {{ .value }}
-                     {{- end }}
-                     {{- end }}
+                      {{- range $k, $v := $.Values.extraParametersNested }}
+                      - name: {{ $k }}
+                        value: {{ printf "%s" $v | quote }}
+                      {{- end }}
+                      - name: extraParametersNested
+                        value: {{ $.Values.extraParametersNested }}
                      {{- range .helmOverrides }}
                       - name: {{ .name }}
                         value: {{ .value | quote }}
