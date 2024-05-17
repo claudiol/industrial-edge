@@ -149,6 +149,8 @@ spec:
       {{- else }}
       helm:
         ignoreMissingValueFiles: true
+        values: |
+          extraParametersNested: {{ $.Values.extraParametersNested }}
         valueFiles:
         {{- include "clustergroup.app.globalvalues.prefixedvaluefiles" $ | nindent 8 }}
         {{- range $valueFile := $.Values.clusterGroup.sharedValueFiles }}
@@ -187,8 +189,6 @@ spec:
           - name: {{ $k }}
             value: {{ printf "%s" $v | quote }}
           {{- end }}
-          - name: extraParametersNested
-            value: {{ $.Values.extraParametersNested }}
           {{- range .overrides }}
           - name: {{ .name }}
             value: {{ .value | quote }}
@@ -218,6 +218,8 @@ spec:
     {{- else if not .kustomize }}
     helm:
       ignoreMissingValueFiles: true
+      values: |
+        extraParametersNested: {{ $.Values.extraParametersNested }}
       valueFiles:
       {{- include "clustergroup.app.globalvalues.valuefiles" $ | nindent 6 }}
       {{- range $valueFile := $.Values.clusterGroup.sharedValueFiles }}
@@ -256,8 +258,6 @@ spec:
         - name: {{ $k }}
           value: {{ printf "%s" $v | quote }}
         {{- end }}
-        - name: extraParametersNested
-          value: {{ $.Values.extraParametersNested }}
         {{- range .overrides }}
         - name: {{ .name }}
           value: {{ .value | quote }}
