@@ -32,6 +32,11 @@ clusterGroup:
     extraValueFiles:
       - /overrides/values-prod-imagedata.yaml
 
+  - banner:
+    name: ocp-banner
+    namespace: default
+    project: default
+      path: charts/datacenter/ocpbanner
 #
 #  To have apps in multiple flavors, use namespaces and use helm overrides as appropriate
 #
