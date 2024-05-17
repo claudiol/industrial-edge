@@ -44,7 +44,10 @@ spec:
                     helm:
                       ignoreMissingValueFiles: true
                       values: |
-                        extraParametersNested: {{ $.Values.extraParametersNested }}
+                        extraParametersNested:
+                        {{- range $k, $v := $.Values.extraParametersNested }}
+                          {{ $k }}: {{ printf "%s" $v | quote }}
+                        {{- end }}
                       valueFiles:
                       {{- include "acm.app.policies.valuefiles" . | nindent 22 }}
                       {{- range $valueFile := .extraValueFiles }}

@@ -150,7 +150,10 @@ spec:
       helm:
         ignoreMissingValueFiles: true
         values: |
-          extraParametersNested: {{ $.Values.extraParametersNested }}
+          extraParametersNested: 
+          {{- range $k, $v := $.Values.extraParametersNested }}
+            {{ $k }}: {{ printf "%s" $v | quote }}
+          {{- end }}
         valueFiles:
         {{- include "clustergroup.app.globalvalues.prefixedvaluefiles" $ | nindent 8 }}
         {{- range $valueFile := $.Values.clusterGroup.sharedValueFiles }}
@@ -219,7 +222,10 @@ spec:
     helm:
       ignoreMissingValueFiles: true
       values: |
-        extraParametersNested: {{ $.Values.extraParametersNested }}
+        extraParametersNested:
+          {{- range $k, $v := $.Values.extraParametersNested }}
+            {{ $k }}: {{ printf "%s" $v | quote }}
+          {{- end }}
       valueFiles:
       {{- include "clustergroup.app.globalvalues.valuefiles" $ | nindent 6 }}
       {{- range $valueFile := $.Values.clusterGroup.sharedValueFiles }}
