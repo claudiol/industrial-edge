@@ -32,8 +32,7 @@ clusterGroup:
     extraValueFiles:
       - /overrides/values-prod-imagedata.yaml
 
-  - banner:
-    name: ocp-banner
+  - name: ocp-banner
     namespace: default
     project: default
       path: charts/datacenter/ocpbanner
